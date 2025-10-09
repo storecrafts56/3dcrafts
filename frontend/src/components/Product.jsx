@@ -14,15 +14,15 @@ const ProductCard = ({ product }) => {
         <img
           src={`${
             hovered &&
-            `https://threedcrafts-1.onrender.com/images/${product.images[1]?.replace(
+            `https://threedcrafts-1.onrender.com/products/images/${product.images[1]?.replace(
               "/uploads/",
               ""
             )}`
-              ? `http://localhost:5000/products/images/${product.images[1]?.replace(
+              ? `https://threedcrafts-1.onrender.com/products/images/${product.images[1]?.replace(
                   "/uploads/",
                   ""
                 )}`
-              : `http://localhost:5000/products/images/${product.images[0]?.replace(
+              : `https://threedcrafts-1.onrender.com/products/images/${product.images[0]?.replace(
                   "/uploads/",
                   ""
                 )}`
