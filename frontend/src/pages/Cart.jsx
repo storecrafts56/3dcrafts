@@ -180,7 +180,7 @@ const Cart = () => {
             >
               <Link to={`/product/${item.productId}`}>
                 <img
-                  src={`http://localhost:5000/products/images/${item.image.replace(
+                  src={`https://threedcrafts-1.onrender.com/products/images/${item.image.replace(
                     "/uploads/",
                     ""
                   )}`}
