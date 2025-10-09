@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Base API URL (update as needed)
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://threedcrafts-1.onrender.com/api";
 
 // Helper to get auth token if needed
 function getAuthHeaders() {
