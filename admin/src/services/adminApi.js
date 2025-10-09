@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = 'https://threedcrafts-1.onrender.com/api';
 
 export const adminApi = axios.create({
   baseURL: API_URL,
