@@ -149,7 +149,7 @@ const ProductDetail = () => {
           {product.images && product.images.length > 0 && (
             <>
               <img
-                src={`http://localhost:5000/products/images/${product.images[
+                src={`https://threedcrafts-1.onrender.com/products/images/${product.images[
                   selectedImage
                 ]?.replace("/uploads/", "")}`}
                 alt={product.name}
@@ -159,7 +159,7 @@ const ProductDetail = () => {
                 {product.images.map((img, idx) => (
                   <img
                     key={idx}
-                    src={`http://localhost:5000/products/images/${img?.replace(
+                    src={`https://threedcrafts-1.onrender.com/images/${img?.replace(
                       "/uploads/",
                       ""
                     )}`}
