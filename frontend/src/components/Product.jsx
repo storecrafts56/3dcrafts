@@ -14,7 +14,7 @@ const ProductCard = ({ product }) => {
         <img
           src={`${
             hovered &&
-            `http://localhost:5000/products/images/${product.images[1]?.replace(
+            `https://threedcrafts-1.onrender.com/images/${product.images[1]?.replace(
               "/uploads/",
               ""
             )}`
