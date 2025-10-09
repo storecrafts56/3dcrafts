@@ -104,7 +104,7 @@ export const generateStarRating = (rating) => {
 export const getImageUrl = (imagePath) => {
   if (!imagePath) return '/placeholder-image.jpg';
   if (imagePath.startsWith('http')) return imagePath;
-  return `${import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'}${imagePath}`;
+  return `${import.meta.env.VITE_API_URL?.replace('/api', '') || 'https://threedcrafts-1.onrender.com'}${imagePath}`;
 };
 
 // Copy to clipboard
