@@ -18,7 +18,7 @@ const WhatsAppFloat = () => (
         type="button"
         className="bg-[#25D366] rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
       >
-        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.stickpng.com%2Fimg%2Ficons-logos-emojis%2Ftech-companies%2Fwhatsapp-logo&psig=AOvVaw07qSqK3a3iTAckvaVYlh8u&ust=1760327015950000&source=images&cd=vfe&opi=89978449&ved=0CBYQjRxqFwoTCJCczKXfnZADFQAAAAAdAAAAABAE" alt="whats app"/>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_j6zKHu8BEYzvw9sK3O5kVj2jE5xA0NNdYw&s" alt="whats app"/>
       </button>
     </a>
   </div>
