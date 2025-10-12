@@ -16,7 +16,7 @@ const WhatsAppFloat = () => (
     >
       <button
         type="button"
-        className="bg-[#25D366] rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
+        className="rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
       >
         <img src="https://res.cloudinary.com/dmomhs5ex/image/upload/v1760241756/w_app_tr_b9qj9a.png" alt="whats app"/>
       </button>
