@@ -180,7 +180,7 @@ const ProductDetail = () => {
         <div className="flex-1">
           <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
           <div className="text-blue-600 text-xl font-semibold mb-2">
-            ${product.price?.toFixed(2)}
+            ₹{product.price?.toFixed(2)}
           </div>
           <div className="mb-3 flex items-center">
             <span className="text-yellow-500 font-medium">
@@ -275,7 +275,7 @@ const ProductDetail = () => {
               />
               Half Payment
               <span className="ml-2 text-gray-500">
-                (${(product.price / 2).toFixed(2)})
+                (₹{(product.price / 2).toFixed(2)})
               </span>
             </label>
             <label>
@@ -289,7 +289,7 @@ const ProductDetail = () => {
               />
               Full Payment
               <span className="ml-2 text-gray-500">
-                (${product.price.toFixed(2)})
+                (₹{product.price.toFixed(2)})
               </span>
             </label>
           </div>
