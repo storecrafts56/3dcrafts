@@ -48,7 +48,7 @@ const ProductCard = ({ product }) => {
 
         <div className="flex items-center justify-between mt-3">
           <span className="text-blue-600 font-bold text-lg">
-            ${product.price.toFixed(2)}
+            ₹{product.price.toFixed(2)}
           </span>
           <div className="flex items-center text-yellow-500 text-sm">
             {"★".repeat(Math.floor(product.rating))}
