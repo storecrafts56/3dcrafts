@@ -131,7 +131,7 @@ const Products = () => {
             <div key={product._id} className="card overflow-hidden">
               <div className="relative">
                 <img
-                  src={product.images?.[0] ? `http://localhost:5000${product.images[0]}` : 'https://images.pexels.com/photos/1126728/pexels-photo-1126728.jpeg?auto=compress&cs=tinysrgb&w=400'}
+                  src={product.images?.[0] ? `https://threedcrafts-1.onrender.com${product.images[0]}` : 'https://images.pexels.com/photos/1126728/pexels-photo-1126728.jpeg?auto=compress&cs=tinysrgb&w=400'}
                   alt={product.name}
                   className="w-full h-48 object-cover"
                 />
