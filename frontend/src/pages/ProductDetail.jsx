@@ -159,7 +159,7 @@ const ProductDetail = () => {
                 {product.images.map((img, idx) => (
                   <img
                     key={idx}
-                    src={`https://threedcrafts-1.onrender.com/images/${img?.replace(
+                    src={`https://threedcrafts-1.onrender.com/products/images/${img?.replace(
                       "/uploads/",
                       ""
                     )}`}
