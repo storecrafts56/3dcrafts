@@ -155,7 +155,9 @@ const ProductDetail = () => {
                 alt={product.name}
                 className="w-[350px] h-[350px] object-cover rounded-lg shadow"
               />
-              <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex flex-wrap">
+           
+              <div className="gap-2 mt-3">
                 {product.images.map((img, idx) => (
                   <img
                     key={idx}
@@ -173,6 +175,7 @@ const ProductDetail = () => {
                   />
                 ))}
               </div>
+                   </div>
             </>
           )}
         </div>
