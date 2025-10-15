@@ -359,6 +359,26 @@ const ProductForm = ({ product, onClose, onSave }) => {
                 ))}
               </div>
             )}
+               {images.length > 0 && (
+              <div className="flex gap-4 mt-4 overflow-x-auto">
+                {images.map((file, idx) => (
+                  <div key={idx} className="relative">
+                    <img
+                      src={`https://threedcrafts-1.onrender.com/uploads/${file}`}
+                      alt={`New ${idx + 1}`}
+                      className="w-24 h-24 object-cover rounded-lg"
+                    />
+                    <button
+                      type="button"
+                      className="absolute top-1 right-1 bg-white rounded-full p-1 shadow"
+                      onClick={() => handleRemoveNewImage(idx)}
+                    >
+                      <Trash2 className="w-4 h-4 text-red-500" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
             {/* Show already uploaded images */}
             {images.length > 0 && (
               <div className="flex gap-4 mt-4 overflow-x-auto">
