@@ -37,6 +37,7 @@ const ProductForm = ({ product, onClose, onSave }) => {
         category: product.category || "",
         tags: product.tags || [],
       });
+      console.log(product.images)
       setImages(product.images || []);
     }
   }, [product]);
