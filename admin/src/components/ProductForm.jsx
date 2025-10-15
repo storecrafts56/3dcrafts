@@ -365,7 +365,7 @@ const ProductForm = ({ product, onClose, onSave }) => {
                 {images.map((file, idx) => (
                   <div key={idx} className="relative">
                     <img
-                      src={`https://threedcrafts-1.onrender.com/uploads/${file}`}
+                      src={`https://threedcrafts-1.onrender.com/uploads/${file.replace("/uploads/",""}`}
                       alt={`New ${idx + 1}`}
                       className="w-24 h-24 object-cover rounded-lg"
                     />
