@@ -37,7 +37,6 @@ const ProductForm = ({ product, onClose, onSave }) => {
         category: product.category || "",
         tags: product.tags || [],
       });
-      console.log(product.images)
       setImages(product.images || []);
     }
   }, [product]);
@@ -98,31 +97,46 @@ const ProductForm = ({ product, onClose, onSave }) => {
   // Upload selected images
   const handleImageUpload = async () => {
     if (!product?._id && !productId) {
-      console.log("Please save the product first before uploading images");
       setError("Please save the product first before uploading images");
       return;
     }
-    if (!newImages.length) {
-      console.log("No new images selected for upload");
-      return;
-    }
+    if (!newImages.length) return;
+
     setLoading(true);
     setError("");
-    try {
-      const formDataImages = new FormData();
-      newImages.forEach((file) => {
-        formDataImages.append("images", file);
+
+    const fileToDataUrl = (file) =>
+      new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error("Failed to read file"));
+        reader.readAsDataURL(file);
       });
 
+    try {
+      // Convert all selected files to base64 (data URL) and strip the prefix
+      const dataUrls = await Promise.all(
+        newImages.map((f) => fileToDataUrl(f))
+      );
+      const base64Images = dataUrls.map((d) => {
+        // d is like "data:image/png;base64,AAA..."
+        const parts = d.split(",");
+        return parts.length > 1 ? parts[1] : parts[0];
+      });
+
+      // Send base64 strings to backend. Backend should expect a JSON body like: { images: [ "AAA...", ... ] }
+      const payload = { images: base64Images };
       const response = await productsAPI.uploadImages(
         productId || product._id,
-        formDataImages
+        payload
       );
-      setImages((prev) => [...prev, ...response.data.images]);
+
+      // Append returned image paths/URLs (depends on backend response)
+      setImages((prev) => [...prev, ...(response.data?.images || [])]);
       setNewImages([]);
       onClose();
-    } catch (error) {
-      console.error("Image upload error:", error);
+    } catch (err) {
+      console.error("Image upload error:", err);
       setError("Failed to upload images");
     } finally {
       setLoading(false);
@@ -360,33 +374,13 @@ const ProductForm = ({ product, onClose, onSave }) => {
                 ))}
               </div>
             )}
-               {images.length > 0 && (
-              <div className="flex gap-4 mt-4 overflow-x-auto">
-                {images.map((file, idx) => (
-                  <div key={idx} className="relative">
-                    <img
-                      src={file}
-                      alt={`New ${idx + 1}`}
-                      className="w-24 h-24 object-cover rounded-lg"
-                    />
-                    <button
-                      type="button"
-                      className="absolute top-1 right-1 bg-white rounded-full p-1 shadow"
-                      onClick={() => handleRemoveNewImage(idx)}
-                    >
-                      <Trash2 className="w-4 h-4 text-red-500" />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            )}
             {/* Show already uploaded images */}
             {images.length > 0 && (
               <div className="flex gap-4 mt-4 overflow-x-auto">
                 {images.map((image, index) => (
                   <div key={index} className="relative">
                     <img
-                      src={`http://localhost:5000${image}`}
+                      src={image}
                       alt={`Product ${index + 1}`}
                       className="w-24 h-24 object-cover rounded-lg"
                     />
