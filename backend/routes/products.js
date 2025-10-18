@@ -22,6 +22,6 @@ router.get('/:id', getProductById);
 router.post('/', adminAuth, createProduct);
 router.put('/:id', adminAuth, updateProduct);
 router.delete('/:id', adminAuth, deleteProduct);
-router.post('/:id/upload', adminAuth, validateImageUpload, uploadProductImages);
+router.post('/:id/upload', adminAuth, uploadProductImages);
 
 module.exports = router;
