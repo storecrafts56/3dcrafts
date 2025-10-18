@@ -93,6 +93,55 @@ const ProductDetail = () => {
       try {
         const data = await fetchProductReviews(id);
         setAllReviews(data.reviews);
+
+        // Compute professional-style rating summary
+        const reviews = data.reviews || [];
+        const totalReviews = reviews.length;
+
+        // Initialize counts for 1-5 stars
+        const ratingCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+        let sumRatings = 0;
+        reviews.forEach((r) => {
+          const rating = Math.max(1, Math.min(5, Number(r.rating) || 0));
+          ratingCounts[rating] = (ratingCounts[rating] || 0) + 1;
+          sumRatings += rating;
+        });
+
+        // Average rating (one decimal) and percentage distribution
+        const averageRating = totalReviews
+          ? parseFloat((sumRatings / totalReviews).toFixed(1))
+          : 0;
+        const ratingPercentages = {};
+        for (let i = 5; i >= 1; i--) {
+          ratingPercentages[i] = totalReviews
+            ? Math.round((ratingCounts[i] / totalReviews) * 100)
+            : 0;
+        }
+
+        // Build distribution array (5 -> 1) for charts/UI
+        const ratingDistribution = [5, 4, 3, 2, 1].map((star) => ({
+          star,
+          count: ratingCounts[star] || 0,
+          percentage: ratingPercentages[star] || 0,
+        }));
+
+        // Attach summary to product state (safe when product might be null)
+        setProduct((prev) => {
+          const base = prev || {};
+          return {
+            ...base,
+            // keep existing product fields, but ensure rating/reviews reflect fetched data
+            rating: averageRating,
+            reviews: reviews,
+            reviewSummary: {
+              totalReviews,
+              averageRating,
+              ratingCounts,
+              ratingPercentages,
+              ratingDistribution,
+            },
+          };
+        });
       } catch (error) {
         console.error("Error fetching product:", error);
       }
@@ -149,22 +198,15 @@ const ProductDetail = () => {
           {product.images && product.images.length > 0 && (
             <>
               <img
-                src={`https://threedcrafts-1.onrender.com/products/images/${product.images[
-                  selectedImage
-                ]?.replace("/uploads/", "")}`}
+                src={product.images[selectedImage]}
                 alt={product.name}
                 className="w-[350px] h-[350px] object-cover rounded-lg shadow"
               />
-              <div className="flex flex-wrap">
-           
-              <div className="gap-2 mt-3">
+              <div className="flex gap-2 mt-3">
                 {product.images.map((img, idx) => (
                   <img
                     key={idx}
-                    src={`https://threedcrafts-1.onrender.com/products/images/${img?.replace(
-                      "/uploads/",
-                      ""
-                    )}`}
+                    src={img}
                     alt={`Thumbnail ${idx + 1}`}
                     className={`w-14 h-14 object-cover rounded cursor-pointer border ${
                       selectedImage === idx
@@ -175,7 +217,6 @@ const ProductDetail = () => {
                   />
                 ))}
               </div>
-                   </div>
             </>
           )}
         </div>
@@ -186,9 +227,24 @@ const ProductDetail = () => {
             ₹{product.price?.toFixed(2)}
           </div>
           <div className="mb-3 flex items-center">
-            <span className="text-yellow-500 font-medium">
-              {"★".repeat(Math.floor(product.rating || 0))}
-            </span>
+            <div className="flex items-center">
+              {Array.from({ length: 5 }).map((_, idx) => {
+                const filledCount = Math.floor(product.rating || 0);
+                const filled = idx < filledCount;
+                return (
+                  <span
+                    key={idx}
+                    className={`text-2xl transition-colors ${
+                      filled ? "text-yellow-500" : "text-gray-300"
+                    }`}
+                    aria-hidden="true"
+                    title={`${idx + 1} star${idx === 0 ? "" : "s"}`}
+                  >
+                    ★
+                  </span>
+                );
+              })}
+            </div>
             <span className="text-gray-500 ml-2">
               {product.rating || 0} / 5 ({product.reviews?.length || 0} reviews)
             </span>
@@ -265,53 +321,49 @@ const ProductDetail = () => {
           )}
 
           {/* Payment Type */}
-          <div className="mb-4">
-            <span className="font-medium mr-2">Payment:</span>
-            <label className="mr-4">
-              <input
-                type="radio"
-                name="paymentType"
-                value="half"
-                checked={paymentType === "half"}
-                onChange={() => setPaymentType("half")}
-                className="mr-1"
-              />
-              Half Payment
-              <span className="ml-2 text-gray-500">
-                (₹{(product.price / 2).toFixed(2)})
-              </span>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="paymentType"
-                value="full"
-                checked={paymentType === "full"}
-                onChange={() => setPaymentType("full")}
-                className="mr-1"
-              />
-              Full Payment
-              <span className="ml-2 text-gray-500">
-                (₹{product.price.toFixed(2)})
-              </span>
-            </label>
-          </div>
+
           {/* Size Selection */}
           <div className="mb-4">
             <span className="font-medium mr-2">Size:</span>
             <div className="flex flex-wrap gap-2">
-              {sizeOptions.map((size) => (
+              {product.sizes?.map((size) => (
                 <button
                   key={size}
                   type="button"
-                  onClick={() => setSelectedSize(size)}
+                  onClick={() => {
+                    const sizesArr = product.sizes || [];
+                    const baseSize = "5";
+                    const origPrice = product.originalPrice ?? product.price;
+                    const baseIndex =
+                      sizesArr.indexOf(baseSize) === -1
+                        ? 0
+                        : sizesArr.indexOf(baseSize);
+                    const idx =
+                      sizesArr.indexOf(size) === -1
+                        ? baseIndex
+                        : sizesArr.indexOf(size);
+                    const steps = Math.max(0, idx - baseIndex);
+
+                    // 30% increase per size step (compounded). Use Math.pow(1.3, steps).
+                    const newPrice = parseFloat(
+                      (origPrice * Math.pow(1.3, steps)).toFixed(2)
+                    );
+
+                    setProduct({
+                      ...product,
+                      price: newPrice,
+                      originalPrice: origPrice,
+                    });
+                    setSelectedSize(size);
+                    setSelectedSize(size);
+                  }}
                   className={`px-3 py-1 rounded border font-medium ${
                     selectedSize === size
                       ? "bg-blue-600 text-white border-blue-600"
                       : "bg-white text-gray-800 border-gray-300 hover:bg-blue-50"
                   }`}
                 >
-                  {size}"
+                  {size}
                 </button>
               ))}
             </div>
