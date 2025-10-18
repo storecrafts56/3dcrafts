@@ -6,26 +6,14 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer bg-white"
+      className="bg-white rounded-xl shadow-lg w-72 p-6 text-center hover:scale-105 transition"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <div className="relative w-full h-64">
         <img
           src={`${
-            hovered &&
-            `https://threedcrafts-1.onrender.com/products/images/${product.images[1]?.replace(
-              "/uploads/",
-              ""
-            )}`
-              ? `https://threedcrafts-1.onrender.com/products/images/${product.images[1]?.replace(
-                  "/uploads/",
-                  ""
-                )}`
-              : `https://threedcrafts-1.onrender.com/products/images/${product.images[0]?.replace(
-                  "/uploads/",
-                  ""
-                )}`
+            hovered && product.images[1] ? product.images[1] : product.images[0]
           }`}
           alt={product.name}
           className="w-full h-full object-cover"
@@ -50,12 +38,6 @@ const ProductCard = ({ product }) => {
           <span className="text-blue-600 font-bold text-lg">
             ₹{product.price.toFixed(2)}
           </span>
-          <div className="flex items-center text-yellow-500 text-sm">
-            {"★".repeat(Math.floor(product.rating))}
-            <span className="text-gray-500 ml-1 text-xs">
-              ({product.reviews?.length})
-            </span>
-          </div>
         </div>
         <Link
           to={`/product/${product._id}`}
