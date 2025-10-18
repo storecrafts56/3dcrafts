@@ -50,9 +50,7 @@ export const productsAPI = {
   create: (productData) => adminApi.post('/products', productData),
   update: (id, productData) => adminApi.put(`/products/${id}`, productData),
   delete: (id) => adminApi.delete(`/products/${id}`),
-  uploadImages: (id, formData) => adminApi.post(`/products/${id}/upload`, formData, {
-    headers: { 'Content-Type': 'multipart/form-data' }
-  }),
+  uploadImages: (id, formData) => adminApi.post(`/products/${id}/upload`, formData),
 };
 
 export const ordersAPI = {
