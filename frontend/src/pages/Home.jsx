@@ -30,6 +30,7 @@ const products = [
 
 export default function Home() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     // Fetch product data from API
     const fetchProduct = async () => {
@@ -38,6 +39,7 @@ export default function Home() {
         console.log(data.products);
         // const newD = await response.json();
         setProducts(data.products);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
@@ -50,7 +52,7 @@ export default function Home() {
       <section
         className="bg-cover md:h-[60vh] h-[65vh] w-[100%] bg-center py-20 text-blue-900 text-center"
         style={{
-          backgroundImage: "url('https://res.cloudinary.com/dmomhs5ex/image/upload/v1760241813/wallpaper_uamg3y.jpg')",
+          backgroundImage: "url('/assets/wallpaper.jpg')",
         }}
       >
         <h1 className="md:text-5xl text-3xl font-bold">Welcome to 3dCrafts</h1>
@@ -72,32 +74,38 @@ export default function Home() {
             Featured Gifts
           </h2>
           <div className="flex flex-wrap gap-8 justify-center">
-            {products.map((productD) => (
-              // <div
-              //   key={product.id}
-              //   className="bg-white rounded-xl shadow-lg w-72 p-6 text-center hover:scale-105 transition"
-              // >
-              //   <img
-              //     src={product.image}
-              //     alt={product.name}
-              //     className="w-full h-44 object-cover rounded-md"
-              //   />
-              //   <h3 className="mt-5 mb-2 text-xl font-medium">
-              //     {product.name}
-              //   </h3>
-              //   <p className="text-gray-500 mb-3">{product.description}</p>
-              //   <div className="font-bold text-lg mb-2">
-              //     ${product.price.toFixed(2)}
-              //   </div>
-              //   <Link
-              //     to={`/product/${product.id}`}
-              //     className="inline-block mt-4 bg-blue-700 text-white px-6 py-2 rounded-full font-bold hover:bg-pink-600 transition"
-              //   >
-              //     View Details
-              //   </Link>
-              // </div>
-              <ProductCard product={productD} />
-            ))}
+            {loading ? (
+              <p>Loading products...</p>
+            ) : products.length === 0 ? (
+              <p>No products available.</p>
+            ) : (
+              products.map((productD) => (
+                // <div
+                //   key={product.id}
+                //   className="bg-white rounded-xl shadow-lg w-72 p-6 text-center hover:scale-105 transition"
+                // >
+                //   <img
+                //     src={product.image}
+                //     alt={product.name}
+                //     className="w-full h-44 object-cover rounded-md"
+                //   />
+                //   <h3 className="mt-5 mb-2 text-xl font-medium">
+                //     {product.name}
+                //   </h3>
+                //   <p className="text-gray-500 mb-3">{product.description}</p>
+                //   <div className="font-bold text-lg mb-2">
+                //     ₹{product.price.toFixed(2)}
+                //   </div>
+                //   <Link
+                //     to={`/product/${product.id}`}
+                //     className="inline-block mt-4 bg-blue-700 text-white px-6 py-2 rounded-full font-bold hover:bg-pink-600 transition"
+                //   >
+                //     View Details
+                //   </Link>
+                // </div>
+                <ProductCard product={productD} />
+              ))
+            )}
           </div>
         </div>
       </section>
