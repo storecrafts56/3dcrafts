@@ -4,7 +4,7 @@ const API_URL = 'https://threedcrafts-1.onrender.com/api';
 
 export const adminApi = axios.create({
   baseURL: API_URL,
-  timeout: 10000,
+  timeout: 60000,
 });
 
 // Request interceptor
