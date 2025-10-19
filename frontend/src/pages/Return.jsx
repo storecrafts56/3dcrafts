@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ReturnRefunds = () => {
+export default const ReturnRefunds = () => {
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <h1 className="text-3xl font-semibold text-gray-800 mb-6">Return and Refund Policy</h1>
@@ -27,4 +27,8 @@ const ReturnRefunds = () => {
       <p className="text-lg text-gray-700 mb-4">
         You will be responsible for paying for your own shipping costs for returning the item. Shipping costs are non-refundable.
       </p>
-    </div
+    </div>
+    )
+}
+
+
