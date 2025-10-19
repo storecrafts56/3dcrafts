@@ -1,6 +1,6 @@
 import React from "react";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
-
+import {Link} from "react-router-dom"
 const Footer = () => (
   <footer className="bg-[#222] text-white pt-10 pb-5">
     <div className="max-w-6xl mx-auto flex flex-wrap justify-between items-start gap-8 px-4">
@@ -47,17 +47,17 @@ const Footer = () => (
         <h3 className="text-lg mb-3 font-semibold">Quick Links</h3>
         <ul className="list-none p-0 m-0 space-y-2">
           <li>
-            <a href="/catalog" className="hover:text-[#f7c04a]">
+            <Link to="/catalog" className="hover:text-[#f7c04a]">
               Catalog
             </a>
           </li>
           <li>
-            <a href="/cart" className="hover:text-[#f7c04a]">
+            <Link to="/cart" className="hover:text-[#f7c04a]">
               Cart
             </a>
           </li>
           <li>
-            <a href="/contact" className="hover:text-[#f7c04a]">
+            <Link to="/contact" className="hover:text-[#f7c04a]">
               Contact
             </a>
           </li>
@@ -69,22 +69,22 @@ const Footer = () => (
         <h3 className="text-lg mb-3 font-semibold">Customer Service</h3>
         <ul className="list-none p-0 m-0 space-y-2">
           <li>
-            <a href="/returns" className="hover:text-[#f7c04a]">
+            <Link to="/returns" className="hover:text-[#f7c04a]">
               Returns & Refunds
             </a>
           </li>
           <li>
-            <a href="/shipping_info" className="hover:text-[#f7c04a]">
+            <Link to="/shipping_info" className="hover:text-[#f7c04a]">
               Shipping Info
             </a>
           </li>
           <li>
-            <a href="/privacy_policy" className="hover:text-[#f7c04a]">
+            <Link to="/privacy_policy" className="hover:text-[#f7c04a]">
               Privacy Policy
             </a>
           </li>
           <li>
-            <a href="/terms_conditions" className="hover:text-[#f7c04a]">
+            <Link to="/terms_conditions" className="hover:text-[#f7c04a]">
               Terms & Conditions
             </a>
           </li>
