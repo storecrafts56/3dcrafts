@@ -1,6 +1,7 @@
 import React from "react";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+
 const Footer = () => (
   <footer className="bg-[#222] text-white pt-10 pb-5">
     <div className="max-w-6xl mx-auto flex flex-wrap justify-between items-start gap-8 px-4">
@@ -42,6 +43,7 @@ const Footer = () => (
           </a>
         </div>
       </div>
+
       {/* Quick Links */}
       <div className="flex-1 min-w-[160px]">
         <h3 className="text-lg mb-3 font-semibold">Quick Links</h3>
@@ -49,21 +51,21 @@ const Footer = () => (
           <li>
             <Link to="/catalog" className="hover:text-[#f7c04a]">
               Catalog
-            </a>
+            </Link>
           </li>
           <li>
             <Link to="/cart" className="hover:text-[#f7c04a]">
               Cart
-            </a>
+            </Link>
           </li>
           <li>
             <Link to="/contact" className="hover:text-[#f7c04a]">
               Contact
-            </a>
+            </Link>
           </li>
-         
         </ul>
       </div>
+
       {/* Customer Service */}
       <div className="flex-1 min-w-[160px]">
         <h3 className="text-lg mb-3 font-semibold">Customer Service</h3>
@@ -71,25 +73,26 @@ const Footer = () => (
           <li>
             <Link to="/returns" className="hover:text-[#f7c04a]">
               Returns & Refunds
-            </a>
+            </Link>
           </li>
           <li>
             <Link to="/shipping_info" className="hover:text-[#f7c04a]">
               Shipping Info
-            </a>
+            </Link>
           </li>
           <li>
             <Link to="/privacy_policy" className="hover:text-[#f7c04a]">
               Privacy Policy
-            </a>
+            </Link>
           </li>
           <li>
             <Link to="/terms_conditions" className="hover:text-[#f7c04a]">
               Terms & Conditions
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
+
       {/* Newsletter */}
       <div className="flex-1 min-w-[220px]">
         <h3 className="text-lg mb-3 font-semibold">Subscribe to Newsletter</h3>
