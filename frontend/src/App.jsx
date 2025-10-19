@@ -15,6 +15,10 @@ import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/Privacy";
+import TermsConditions from "./pages/Terms";
+import ShippingInfo from "./pages/Info";
+import ReturnRefunds from "./pages/Return";
 
 function App() {
   return (
@@ -31,6 +35,10 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy_policy" element={<PrivacyPolicy />} />
+                <Route path="/term_conditions" element={<TermsConditions />} />
+                <Route path="/shipping_info" element={<ShippingInfo />} />
+                <Route path="/returns" element={<ReturnRefunds />} />
               </Routes>
             </main>
             <Footer />
