@@ -5,7 +5,7 @@ const PrivacyPolicy = () => {
     <div className="max-w-4xl mx-auto px-6 py-12">
       <h1 className="text-3xl font-semibold text-gray-800 mb-6">Privacy Policy</h1>
       <p className="text-lg text-gray-700 mb-4">
-        At [Your Company Name], we value your privacy. This Privacy Policy explains how we collect, use, and protect your personal information.
+        At 3dCrafts, we value your privacy. This Privacy Policy explains how we collect, use, and protect your personal information.
       </p>
 
       <h2 className="text-2xl font-semibold text-gray-800 mt-6 mb-3">Information We Collect</h2>
