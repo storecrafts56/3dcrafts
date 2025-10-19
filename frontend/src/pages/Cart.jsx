@@ -194,7 +194,7 @@ const Cart = () => {
                     {item.name}
                   </h2>
                 </Link>
-                <p className="text-gray-700">${item.price.toFixed(2)}</p>
+                <p className="text-gray-700">₹{item.price.toFixed(2)}</p>
                 <p className="text-gray-600">Size: {item.size}"</p>
                 <p className="text-gray-600">Payment: {item.paymentType}</p>
                 {item.customerPhoto && (
@@ -233,7 +233,7 @@ const Cart = () => {
           ))}
           <div className="text-right mt-8">
             <h3 className="text-xl font-bold mb-2">
-              Subtotal: ${getTotal().toFixed(2)}
+              Subtotal: ₹{getTotal().toFixed(2)}
             </h3>
             <Link to="/checkout">
               <button className="bg-blue-600 text-white px-8 py-3 rounded font-semibold hover:bg-blue-700 transition">
