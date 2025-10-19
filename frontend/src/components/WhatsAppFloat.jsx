@@ -1,6 +1,6 @@
 import React from "react";
 
-const whatsappNumber = "1234567890";
+const whatsappNumber = "9628627054";
 const message = encodeURIComponent(
   "Hello! I have a question about your products."
 );
