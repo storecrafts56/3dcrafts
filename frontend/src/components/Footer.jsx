@@ -47,13 +47,13 @@ const Footer = () => (
         <h3 className="text-lg mb-3 font-semibold">Quick Links</h3>
         <ul className="list-none p-0 m-0 space-y-2">
           <li>
-            <a href="/shop" className="hover:text-[#f7c04a]">
-              Shop
+            <a href="/catalog" className="hover:text-[#f7c04a]">
+              Catalog
             </a>
           </li>
           <li>
-            <a href="/about" className="hover:text-[#f7c04a]">
-              About Us
+            <a href="/cart" className="hover:text-[#f7c04a]">
+              Cart
             </a>
           </li>
           <li>
@@ -61,11 +61,7 @@ const Footer = () => (
               Contact
             </a>
           </li>
-          <li>
-            <a href="/faq" className="hover:text-[#f7c04a]">
-              FAQ
-            </a>
-          </li>
+         
         </ul>
       </div>
       {/* Customer Service */}
