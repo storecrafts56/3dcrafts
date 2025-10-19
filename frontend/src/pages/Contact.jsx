@@ -41,11 +41,10 @@ export default function Contact() {
           <span className="font-semibold">Email:</span> support@3dCrafts.com
         </div>
         <div>
-          <span className="font-semibold">Phone:</span> +1 (800) 123-4567
+          <span className="font-semibold">Phone:</span> +919628627054
         </div>
         <div>
-          <span className="font-semibold">Address:</span> 123 Gift Avenue, Suite
-          100, City, Country
+          <span className="font-semibold">Address:</span> Durga Mandir Gali, Rudrapur, Uttarakhand, 263153 
         </div>
       </div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
