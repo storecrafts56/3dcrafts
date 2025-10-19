@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default const ReturnRefunds = () => {
+const ReturnRefunds = () => {
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <h1 className="text-3xl font-semibold text-gray-800 mb-6">Return and Refund Policy</h1>
@@ -32,3 +32,4 @@ export default const ReturnRefunds = () => {
 }
 
 
+export default ReturnRefunds;
