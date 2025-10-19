@@ -180,10 +180,7 @@ const Cart = () => {
             >
               <Link to={`/product/${item.productId}`}>
                 <img
-                  src={`https://threedcrafts-1.onrender.com/products/images/${item.image.replace(
-                    "/uploads/",
-                    ""
-                  )}`}
+                  src={item.image}
                   alt={item.name}
                   className="w-20 h-20 object-cover rounded-lg mb-4 md:mb-0 md:mr-6"
                 />
