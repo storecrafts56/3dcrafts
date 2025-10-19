@@ -875,7 +875,7 @@ const Checkout = () => {
                   <div className="flex justify-between mt-1">
                     <p>Quantity: {item.quantity}</p>
                     <p className="font-medium">
-                      ${(item.price * item.quantity).toFixed(2)}
+                      ₹{(item.price * item.quantity).toFixed(2)}
                     </p>
                   </div>
                 </div>
@@ -884,7 +884,7 @@ const Checkout = () => {
 
             <div className="flex justify-between pt-2 border-t border-gray-200">
               <span className="font-medium">Total Amount:</span>
-              <span className="font-medium">${totalAmount.toFixed(2)}</span>
+              <span className="font-medium">₹{totalAmount.toFixed(2)}</span>
             </div>
 
             {paymentType === "half" && (
@@ -899,7 +899,7 @@ const Checkout = () => {
           <div className="mb-6 p-4 bg-gray-50 rounded-md">
             <h2 className="text-lg font-semibold mb-4">Scan Payment Code</h2>
             <p className="text-sm text-gray-600 mb-4">
-              Please scan the QR code to complete your payment of $
+              Please scan the QR code to complete your payment of ₹
               {paidAmount.toFixed(2)}
             </p>
 
