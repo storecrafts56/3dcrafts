@@ -52,7 +52,7 @@ export default function Home() {
       <section
         className="bg-cover md:h-[60vh] h-[65vh] w-[100%] bg-center py-20 text-blue-900 text-center"
         style={{
-          backgroundImage: "url('/assets/wallpaper.jpg')",
+          backgroundImage: "url('https://res.cloudinary.com/dmomhs5ex/image/upload/v1760241813/wallpaper_uamg3y.jpg')",
         }}
       >
         <h1 className="md:text-5xl text-3xl font-bold">Welcome to 3dCrafts</h1>
