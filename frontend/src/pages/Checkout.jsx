@@ -989,7 +989,7 @@ const Checkout = () => {
               {paymentType === "half" ? "Half Payment (50%)" : "Full Payment"}
             </p>
             <p className="text-sm">
-              <span className="font-medium">Amount Paid:</span> $
+              <span className="font-medium">Amount Paid:</span> ₹
               {paidAmount.toFixed(2)}
               {paymentType === "half" && ` (of $${totalAmount.toFixed(2)})`}
             </p>
