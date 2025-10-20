@@ -859,10 +859,7 @@ const Checkout = () => {
                 className="flex items-start mb-4 pb-4 border-b border-gray-200 last:border-b-0"
               >
                 <img
-                  src={`http://localhost:5000/products/images/${item.image?.replace(
-                    "/uploads/",
-                    ""
-                  )} `}
+                  src={item.image}
                   alt={item.name}
                   className="w-16 h-16 object-cover rounded mr-4"
                 />
