@@ -47,7 +47,7 @@ app.use("/api/", limiter);
 app.use(
   cors({
     origin: [
-      process.env.FRONTEND_URL || "http://localhost:5173",
+      "https://www.3dcrafts.store" || "https://3dcrafts.store"|| process.env.FRONTEND_URL || "http://localhost:5173",
       process.env.ADMIN_URL || "http://localhost:5174",
     ],
     credentials: true,
