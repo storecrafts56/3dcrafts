@@ -566,7 +566,7 @@ const Checkout = () => {
 
   const [form, setForm] = useState({
     name: "",
-    email: "",
+    email: "user@3dcrafts.com",
     phone: "",
     address: "",
     city: "",
@@ -741,19 +741,6 @@ const Checkout = () => {
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
                 />
               </label>
-
-              <label className="block">
-                <span className="text-gray-700">Email*</span>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-                />
-              </label>
-
               <label className="block">
                 <span className="text-gray-700">Phone*</span>
                 <input
