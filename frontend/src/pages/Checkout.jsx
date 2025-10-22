@@ -891,7 +891,7 @@ const Checkout = () => {
               {/* QR Code Image - in a real app, this would be generated */}
               <div className="w-48 h-48 bg-white p-3 border rounded-md mb-4">
                 <img
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Order"
+                  src="https://res.cloudinary.com/dmomhs5ex/image/upload/v1761138987/ss_site_dp7u0j.png"
                   alt="QR Code"
                   className="w-full h-full"
                 />
