@@ -978,9 +978,7 @@ const Checkout = () => {
               {paymentType === "half" && ` (of $${totalAmount.toFixed(2)})`}
             </p>
           </div>
-          <p className="text-sm text-gray-500 mb-6">
-            A confirmation email has been sent to {form.email}.
-          </p>
+         
           <button
             onClick={() => navigate("/")}
             className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
